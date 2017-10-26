@@ -17,22 +17,22 @@ import static org.junit.Assert.*;
  * @author Ryan
  */
 public class ZooKeeperTest {
-    
+
     public ZooKeeperTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -69,5 +69,5 @@ public class ZooKeeperTest {
         instance.displayAnimals();
 
     }
-    
+
 }

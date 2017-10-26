@@ -12,7 +12,8 @@ import javax.swing.text.PlainDocument;
 class JTextFieldLimit extends PlainDocument {
   private int limit;
   //TextFieldLimit used for AddAnimal
-  JTextFieldLimit(int limit) {
+
+    JTextFieldLimit(int limit) {
     super();
     this.limit = limit;
   }
