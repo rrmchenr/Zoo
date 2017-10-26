@@ -1,5 +1,7 @@
 package zoo;
 
+
+import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -11,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 public class ZooInterface extends JFrame{
@@ -21,8 +24,20 @@ public class ZooInterface extends JFrame{
     JFrame guiFrame;
     
     ZooInterface(){
+        //make look and feel of the java GUIS reflect users platform
+        try { 
+    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+} catch (Exception e) {
+    e.printStackTrace();
+}
+        //Color GUIS 
+        UIManager.put("Button.background", Color.GRAY);
+        UIManager.put("Panel.background", Color.LIGHT_GRAY);
+        UIManager.put("Frame.background", Color.LIGHT_GRAY);
+        
         //String array for ADD drop down menu
         String[] Animals = {"Butterfly", "Camel", "Gorilla", "Horse", "Lions",  "Monkey", "Penguin", "Seal", "Sloth", "Tiger", "Tortoise"};
+        
         //Initilize array for DISPLAY drop down menu
         String[] AllAnimals = new String[Animals.length+1];
         
@@ -31,7 +46,7 @@ public class ZooInterface extends JFrame{
         for(int x = 1; x<=Animals.length; x++){
         AllAnimals[x] = Animals[x-1];
         }
-        
+        //Initilize ComboBoxes
         S1 = new JComboBox(Animals);
         S2 = new JComboBox(AllAnimals);
 
@@ -62,7 +77,7 @@ public class ZooInterface extends JFrame{
         this.setLayout(Lay);
         this.setTitle("Detroit Zoo");
 
-        
+        //add components to the Panel for disiplay
         Panel.setLayout(Lay);
         Panel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         Panel.add(AddField);
@@ -75,19 +90,18 @@ public class ZooInterface extends JFrame{
         Panel.add(AddSearchLabel);
         Panel.add(S2);
         Panel.add(SearchAnimalButton);
-        
-        
-        
-        
+        //adds entire panel to the screen
         this.add(Panel);
         
     }
+    //adds actionlisteners to all the buttons
         void addListeners(ActionListener Listeners) {
         
         AddAnimalButton.addActionListener(Listeners);
         RemoveAnimalButton.addActionListener(Listeners);
         SearchAnimalButton.addActionListener(Listeners);
     }
+        //Creates window when search button is called
         public void createSearchWindow(String list){
     ZooSearch SWO = new ZooSearch(ZooInterface.this, list);
     SWO.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -95,6 +109,7 @@ public class ZooInterface extends JFrame{
     SWO.setVisible(true);
     SWO.setTitle("Search");
 }
+        //Warning if a number is not input for Remove function
         public void DisplayWarning(){
         JOptionPane.showMessageDialog(guiFrame, "Please insert a number");
         }

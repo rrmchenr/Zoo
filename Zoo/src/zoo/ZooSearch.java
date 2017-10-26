@@ -21,7 +21,7 @@ import javax.swing.JTextField;
 public class ZooSearch extends JDialog{
     JTextArea JTA;
     JScrollPane ScrollAnimals;
-
+    //string is passed in to display
     public ZooSearch(JFrame frame, String list){
     super(frame, "Help Window", true);
     setLayout(new FlowLayout());
@@ -32,7 +32,7 @@ public class ZooSearch extends JDialog{
     ScrollAnimals.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     ScrollAnimals.setPreferredSize(new Dimension(250,350));
     ScrollAnimals.setMinimumSize(new Dimension(10,10));
-
+    
     add(ScrollAnimals);
     }
 }
